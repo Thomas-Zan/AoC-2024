@@ -1,5 +1,5 @@
 
-import day1.Day01
+import day01.Day01
 import java.nio.file.Paths
 import kotlin.io.path.readLines
 
