@@ -22,6 +22,12 @@ class Grid(input: List<String>) {
         return grid[index(coordinates)]
     }
 
+    fun findAllCoordinatesOfValue(character: Char): List<Pair<Int, Int>> {
+        return grid.mapIndexed { index, char -> index to char }
+            .filter { it.second == character }
+            .map { it.first }.map { coordinates(it) }
+    }
+
 
     fun nextInDirection(coordinates: Pair<Int, Int>, direction: GridDirection): Pair<Int, Int> {
         return when(direction){

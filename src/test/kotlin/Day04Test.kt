@@ -43,7 +43,7 @@ MXMXAXMASX"""
     }
 
 
-    //@Test
+    @Test
     fun `day04 part1 can be solved`() {
         val day04 = Day04(readLinesFromString(inputString))
         assertEquals(18, day04.solvePt1() )
