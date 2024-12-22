@@ -9,12 +9,32 @@ class Day04(input: List<String>) {
 
 
     fun solvePt1(): Int {
-
         val directions = GridDirection.entries
         val coordinatesOfX = grid.findAllCoordinatesOfValue('X')
         return directions.sumOf { findStuffInDirection(coordinatesOfX, it) }
+    }
+
+    fun solvePt2(): Int {
+        val coordinatesOfA = grid.findAllCoordinatesOfValue('A')
+        val list1 = coordinatesOfA.map { ulToDr(it) }
+        val list2 = coordinatesOfA.map { dlToUr(it) }
+
+        val list3 = list1.zip(list2)
+
+        return list3.map { (it.first == "MAS" || it.first == "SAM") && (it.second == "SAM" || it.second == "MAS") }.count { it }
 
     }
+
+    private fun dlToUr(coords: Pair<Int, Int>): String {
+        return grid.valueAt(grid.nextInDirection(coords, GridDirection.DOWN_LEFT))
+            .toString() + "A" + grid.valueAt(grid.nextInDirection(coords, GridDirection.UP_RIGHT)).toString()
+    }
+
+    private fun ulToDr(coords: Pair<Int, Int>): String {
+        return grid.valueAt(grid.nextInDirection(coords, GridDirection.UP_LEFT))
+            .toString() + "A" + grid.valueAt(grid.nextInDirection(coords, GridDirection.DOWN_RIGHT)).toString()
+    }
+
 
     private fun findStuffInDirection(coordinatesOfX: List<Pair<Int, Int>>, gridDirection: GridDirection) =
         coordinatesOfX.asSequence().map { grid.nextInDirection(it, gridDirection) }

@@ -8,6 +8,7 @@ fun main() {
     println("Day 1 part 1 solution: ${Day01(readLinesFromFile("2024-01.txt")).solvePart1()}")
     println("Day 1 part 2 solution: ${Day01(readLinesFromFile("2024-01.txt")).solvePart2()}")
     println("Day 4 part 1 solution: ${Day04(readLinesFromFile("2024-04.txt")).solvePt1()}")
+    println("Day 4 part 1 solution: ${Day04(readLinesFromFile("2024-04.txt")).solvePt2()}")
 }
 
 
